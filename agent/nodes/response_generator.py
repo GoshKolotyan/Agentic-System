@@ -7,7 +7,7 @@ def generate_response(state: MessageState) -> MessageState:
     
     # Print to terminal with formatting
     logging.info("ACTION COMPLETED:")
-    logging.info(f"{response}")
+    # logging.info(f"{response}")
     
     # If there's an output file, print its path
     if "output_file" in state and state["output_file"]:

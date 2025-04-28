@@ -1,15 +1,7 @@
 from ..utils.state import MessageState
 
 def primary_router(state: MessageState) -> str:
-    """
-    Primary router that determines the next node based on the intent.
-    
-    Args:
-        state: The current state
-        
-    Returns:
-        The name of the next node to execute
-    """
+    """primary router that determines the next node based on the intent."""
     if state.get("intent") == "question":
         return "handle_question"
     elif state.get("intent") == "generation":
@@ -18,15 +10,7 @@ def primary_router(state: MessageState) -> str:
         return "generate_response"
 
 def intent_router(state: MessageState) -> str:
-    """
-    Intent router that determines the specific processing node.
-    
-    Args:
-        state: The current state
-        
-    Returns:
-        The name of the specific processing node
-    """
+    """Intent router that determines the specific processing node."""
     specific_intent = state.get("intent")
     
     if specific_intent == "generate_code":

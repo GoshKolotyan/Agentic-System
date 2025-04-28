@@ -18,10 +18,10 @@ def handle_question(state: MessageState) -> MessageState:
     
     #summary for logging
     summary = answer[:100] + "..." if len(answer) > 100 else answer
-    
+   
     #logging     
     logging.info("ANSWER OF QUESTION:")
-    logging.info(f"{summary}")
+    logging.info(f"{answer}")
 
     # Update state
     return {

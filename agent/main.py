@@ -103,13 +103,13 @@ def main():
                 logging.warning("Empty input, skipping...")
                 continue
             
-            # Create initial state with user input
+            #initial state with user input
             initial_state = create_initial_state(user_input)
             
-            # Process the input through the graph
+            #process the input through the graph
             app.invoke(initial_state)
             
-            logging.info("\nReady for next input...")
+            logging.info("Ready for next input...")
             
     except KeyboardInterrupt:
         logging.warning("\n\nExiting program. Goodbye!")

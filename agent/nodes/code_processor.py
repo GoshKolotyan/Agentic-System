@@ -20,7 +20,7 @@ def generate_code(state: MessageState) -> MessageState:
     
     code = extract_code_from_markdown(code_with_markdown, language)
     
-    output_file = FileUtils.get_output_filename(language, is_code=True)
+    output_file = FileUtils.get_output_filename(language=language, is_code=True)
     
     success = FileUtils.write_to_file(output_file, code)
     

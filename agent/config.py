@@ -30,9 +30,17 @@ class Config:
         "css": ".css"
     }
     
-    DEFAULT_CODE_OUTPUT = "output.py"
-    DEFAULT_TEXT_OUTPUT = "output.txt"
-    
+    SAVING_FOLDER = "outputs"
+    if not os.path.exists(SAVING_FOLDER):   
+        os.makedirs(SAVING_FOLDER)
+    SAVING_FOLDER_CODE = os.path.join(SAVING_FOLDER, "code")
+    SAVING_FOLDER_TEXT = os.path.join(SAVING_FOLDER, "text")
+    if not os.path.exists(SAVING_FOLDER_CODE):
+        os.makedirs(SAVING_FOLDER_CODE)
+    if not os.path.exists(SAVING_FOLDER_TEXT):
+        os.makedirs(SAVING_FOLDER_TEXT)
+    DEFAULT_CODE_OUTPUT = os.path.join(SAVING_FOLDER_CODE, "output.py")
+    DEFAULT_TEXT_OUTPUT = os.path.join(SAVING_FOLDER_TEXT, "output.txt")
     @staticmethod
     def check_api_key():
         """Check if the OpenAI API key is set."""

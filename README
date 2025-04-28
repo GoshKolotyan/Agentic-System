@@ -1,141 +1,28 @@
 # LangGraph Message Processor
 
-A flexible, LangGraph-based application for processing natural language requests and performing various actions based on intent classification.
+Process natural language requests using LangGraph for intent-based routing.
 
 ## Features
+- Answer questions
+- Generate and edit code
+- Generate and edit text
 
-- **Question Answering**: Directly answer user questions
-- **Code Generation**: Generate code in various programming languages
-- **Code Editing**: Edit existing code files
-- **Text Generation**: Generate free-form text content
-- **Text Editing**: Edit existing text files
-- **Intent-Based Routing**: Automatically determine user intent and route to appropriate handlers
-
-## Project Structure
-
-```
-message_processor/
-├── __init__.py        # Package initialization
-├── config.py          # Configuration settings
-├── main.py            # Main application logic
-├── nodes/             # LangGraph nodes
-│   ├── __init__.py    # Nodes package initialization
-│   ├── analyzer.py    # Message analysis node
-│   ├── question_handler.py  # Question handling node
-│   ├── intent_classifier.py # Intent classification node
-│   ├── code_processor.py    # Code generation/editing nodes
-│   ├── text_processor.py    # Text generation/editing nodes
-│   └── response_generator.py  # Response generation node
-└── utils/             # Utility functions
-    ├── __init__.py    # Utils package initialization
-    ├── state.py       # State management
-    ├── file_utils.py  # File handling utilities
-    ├── llm.py         # LLM integration utilities
-    └── router.py      # LangGraph routing utilities
-```
-
-## Requirements
-
-- Python 3.8+
-- LangGraph
-- LangChain
-- OpenAI API key (or compatible model)
-
-## Installation
-
-1. Clone this repository:
-   ```
-   git clone <repository-url>
-   cd langgraph-message-processor
-   ```
-
-2. Install dependencies:
-   ```
-   pip install langgraph langchain langchain_openai
-   ```
-
-3. Set up your OpenAI API key:
-   ```
-   export OPENAI_API_KEY=your_api_key_here
-   ```
-
-## Usage
-
-Run the application:
-
-```
+# Run
 python run.py
 ```
 
-### Command Line Options
 
-The application supports several command-line options for visualization and debugging:
-
+## Structure
 ```
-python run.py --visualize             # Open graph visualization in browser
-python run.py --show-graph            # Print graph structure in terminal
-python run.py --track-state           # Track state transitions during execution
-python run.py --output-html=file.html # Specify output HTML file for visualization
-```
-
-### Interactive Commands
-
-While the application is running, you can use special commands:
-
-- `@visualize` - Generate and open a visualization of the graph
-- `@structure` - Print the graph structure to the terminal
-
-### Example Interactions
-
-#### Asking Questions
-```
-You: What is LangGraph?
+message_processor/
+├── main.py         # Core application
+├── config.py       # Settings
+├── nodes/          # Processing components
+└── utils/          # Helper functions
 ```
 
-#### Generating Code
-```
-You: Generate a Python function to calculate Fibonacci numbers
-```
-
-#### Editing Code
-```
-You: Add error handling to the existing code
-```
-
-#### Generating Text
-```
-You: Write a short introduction about artificial intelligence
-```
-
-#### Editing Text
-```
-You: Make the text more concise and professional
-```
-
-### Graph Visualization
-
-The application includes a graph visualization feature that creates an interactive HTML representation of the LangGraph workflow. This visualization:
-
-- Shows all nodes in the graph
-- Displays connections between nodes
-- Highlights the flow of execution
-- Can be opened in any web browser
-
-To generate a visualization, use the `--visualize` flag when starting the application or type `@visualize` during execution.
-
-## Extending the Application
-
-### Adding New Node Types
-
-1. Create a new node file in the `nodes/` directory
-2. Implement the node function following the pattern of existing nodes
-3. Update `__init__.py` to export the new node
-4. Add the node to the graph in `main.py`
-
-### Modifying the Flow
-
-To change the flow of the application, modify the graph construction in `build_graph()` within `main.py`.
+## Extending
+Add new nodes in the `nodes/` directory and update `main.py` to modify flow.
 
 ## License
-
-MIT License
+MIT

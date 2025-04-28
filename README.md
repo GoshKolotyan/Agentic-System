@@ -12,7 +12,7 @@ python run.py
 ```
 
 
-## Structure
+Structure
 ```
 message_processor/
 ├── main.py         # Core application
@@ -20,9 +20,3 @@ message_processor/
 ├── nodes/          # Processing components
 └── utils/          # Helper functions
 ```
-
-## Extending
-Add new nodes in the `nodes/` directory and update `main.py` to modify flow.
-
-## License
-MIT

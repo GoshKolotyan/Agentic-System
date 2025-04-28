@@ -1,0 +1,35 @@
+# Agentic Program with LangChain
+
+## Overview
+
+This project implements an intelligent agent that can analyze user messages, determine whether they are questions or requests to generate/edit content, and respond accordingly. The agent can:
+
+1. Answer questions directly in the terminal
+2. Generate code in various programming languages
+3. Edit existing code files
+4. Generate text content
+5. Edit existing text content
+
+## Project Structure
+
+```
+agentic-program/
+├── main.py                 # Entry point for the application
+├── config.py               # Configuration settings
+├── requirements.txt        # Python dependencies
+├── README.md               # Project documentation
+├── src/
+│   ├── __init__.py
+│   ├── input_handler.py    # Handles user input
+│   ├── intent_analyzer.py  # Analyzes user intent
+│   ├── task_router.py      # Routes tasks to appropriate handlers
+│   ├── handlers/
+│   │   ├── __init__.py
+│   │   ├── question_handler.py  # Handles direct questions
+│   │   ├── code_handler.py      # Handles code generation/editing
+│   │   └── text_handler.py      # Handles text generation/editing
+│   └── response_generator.py    # Generates response summaries
+└── output/                 # Directory for generated files
+    ├── code/               # Generated code files
+    └── text/               # Generated text files
+```

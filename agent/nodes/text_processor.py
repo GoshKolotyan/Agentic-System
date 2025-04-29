@@ -1,3 +1,4 @@
+import logging
 from ..utils.state import MessageState
 from ..utils.llm import query_llm, extract_code_from_markdown
 from ..utils.file_utils import FileUtils
@@ -19,8 +20,9 @@ def generate_text(state: MessageState) -> MessageState:
     
     output_file = FileUtils.get_textgen_filename(filename=filename)
     
-    success = FileUtils.write_to_file(output_file, generated_text, is_code=False, is_question=False)
+    success = FileUtils.write_to_file(output_file, generated_text, is_code=False, is_question=False, is_text=True)
     
+    logging.info(f"Generated text: {generated_text}")
     response = f"Generated text and saved to {output_file}"
     if not success:
         response = f"Error saving generated text to {output_file}"
@@ -37,7 +39,7 @@ def edit_text(state: MessageState) -> MessageState:
     user_message = state["messages"][-1].content
     filename = state.get("filename") or "output.txt"
     
-    output_file = FileUtils.get_textgen_filename(is_code=False)
+    output_file = FileUtils.get_textgen_filename(filename=filename)
     
     existing_text = FileUtils.read_file_if_exists(output_file)
     
@@ -61,9 +63,9 @@ def edit_text(state: MessageState) -> MessageState:
     else:
         edited_text = edited_text_with_markdown
     
-    success = FileUtils.write_to_file(output_file, edited_text, is_code=False, is_question=False)
+    success = FileUtils.write_to_file(output_file, edited_text, is_code=False, is_question=False, is_text=True)
 
-    
+    logging.info(f"Edited text: {edited_text}")
     response = f"Edited text and saved to {output_file}"
     if not success:
         response = f"Error saving edited text to {output_file}"

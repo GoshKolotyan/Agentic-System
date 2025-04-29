@@ -44,7 +44,7 @@ class FileUtils:
             return f"# File {filename} does not exist. Creating new file."
     
     @staticmethod
-    def write_to_file(filename: str, content: str, is_question: bool = False, user_message: str = None, is_code: bool = False) -> bool:
+    def write_to_file(filename: str, content: str, is_question: bool = False, user_message: str = None, is_code: bool = False, is_text: bool = False) -> bool:
         """write content to a file."""
         try:
             logging.info(f"Writing to file: {filename}")
@@ -54,7 +54,7 @@ class FileUtils:
                     f.write(f"Answer: {content}\n\n")
                 elif is_code:
                     f.write(content)
-                else:
+                elif is_text:
                     f.write(content)
             return True
         except Exception as e:
@@ -68,9 +68,9 @@ class FileUtils:
         
         extension = config.FILE_EXTENSIONS.get(language.lower(), ".txt")
         if extension == ".txt":
-            default_filename = config.SAVING_FOLDER_TEXT + f"/output{extension}"
+            default_filename = config.SAVING_FOLDER_TEXT + f"/fixed_code{extension}"
         else:
-            default_filename = config.SAVING_FOLDER_CODE + f"/output{extension}"
+            default_filename = config.SAVING_FOLDER_CODE + f"/fixed_code{extension}"
         
         # if os.path.exists(default_filename):
         #     logging.info(f"Existing file found: {default_filename}")

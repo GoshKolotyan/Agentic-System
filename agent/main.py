@@ -122,6 +122,7 @@ def main():
 
             #process the input through the graph
             app.invoke(initial_state)
+            app.get_graph()
             
             # logging.info("Ready for next input...")
             

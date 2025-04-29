@@ -19,9 +19,7 @@ def handle_question(state: MessageState) -> MessageState:
 
     
     answer = query_llm(prompt)
-    now = datetime.now()
-    timestamp = f"{now.year}{now.month:02d}{now.day:02d}_{now.hour:02d}{now.minute:02d}{now.second:02d}"
-    
+
     #save answer to file
     filename = FileUtils.get_answer_filename(filename=filename)
     FileUtils.write_to_file(filename=filename, content=answer, 

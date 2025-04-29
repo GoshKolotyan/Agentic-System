@@ -34,7 +34,7 @@ A natural language processing system that uses LangGraph for intent-based routin
 ```
 ## **Installation**
 ### **Prerequisites**
-- Python 3.8 or higher
+- Python 3.10 or higher
 - pip package manager
 ### **Option 1: Local Installation**
 1. Clone the repository

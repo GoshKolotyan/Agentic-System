@@ -103,7 +103,7 @@ python run.py
    # Test the function
    print(greet("Bob"))
    print(greet(""))
-
+    ```
  
 4. **Text Generation**
  ```

@@ -1,4 +1,4 @@
-# ** LangGraph Message Processor**
+# **LangGraph Message Processor**
 A natural language processing system that uses LangGraph for intent-based routing to handle various types of requests.
 ## **Features**
 - **Question Answering**: Get responses to your inquiries
@@ -33,10 +33,10 @@ A natural language processing system that uses LangGraph for intent-based routin
 └── run.py # runner of agent
 ```
 ## **Installation**
-### ** Prerequisites**
+### **Prerequisites**
 - Python 3.8 or higher
 - pip package manager
-### ** Option 1: Local Installation**
+### **Option 1: Local Installation**
 1. Clone the repository
  ```bash
 git clone git@github.com:GoshKolotyan/Agentic-System.git

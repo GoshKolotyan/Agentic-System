@@ -8,6 +8,36 @@ A natural language processing system that uses LangGraph for intent-based routin
 - **Code Operations**: Generate and edit code across different programming languages
 - **Text Operations**: Create and modify text content including creative writing
 
+## Project Structure
+
+```
+.
+├── Dockerfile
+├── LICENSE
+├── README.md
+├── agent
+│   ├── __init__.py
+│   ├── config.py
+│   ├── main.py # main fuction 
+│   ├── nodes
+│   │   ├── __init__.py
+│   │   ├── analyzer.py
+│   │   ├── code_processor.py
+│   │   ├── intent_classifier.py
+│   │   ├── question_handler.py
+│   │   ├── response_generator.py
+│   │   └── text_processor.py
+│   └── utils
+│       ├── __init__.py
+│       ├── file_utils.py
+│       ├── llm.py
+│       ├── router.py
+│       └── state.py
+├── configs.yaml # configs
+├── requirements.txt
+└── run.py #runer of agent
+```
+
 ## Installation
 
 ### Prerequisites
@@ -105,26 +135,3 @@ python run.py
    ```
    Edit this text for me: The quik brown foxes jumps over the lasy dog and the moon is made of green cheese.
    ```
-
-## Project Structure
-
-```
-agent/
-├── __init__.py
-├── config.py
-├── main.py
-├── nodes/
-│   ├── __init__.py
-│   ├── analyzer.py
-│   ├── code_processor.py
-│   ├── intent_classifier.py
-│   ├── question_handler.py
-│   ├── response_generator.py
-│   └── text_processor.py
-└── utils/
-    ├── __init__.py
-    ├── file_utils.py
-    ├── llm.py
-    ├── router.py
-    └── state.py
-```

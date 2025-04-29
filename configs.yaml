@@ -1,0 +1,35 @@
+FILE_EXTENSIONS :
+        "python": ".py" 
+        "javascript": ".js" 
+        "typescript": ".ts" 
+        "java": ".java"
+        "cpp": ".cpp"
+        "c++": ".cpp" 
+        "c": ".c" 
+        "go": ".go"
+        "rust": ".rs"
+        "ruby": ".rb"
+        "php": ".php"
+        "csharp": ".cs"
+        "c#": ".cs"
+        "swift": ".swift"
+        "kotlin": ".kt"
+        "scala": ".scala"
+        "shell": ".sh"
+        "bash": ".sh"
+        "html": ".html"
+        "css": ".css"
+
+
+DEFAULT_MODEL: "gpt-3.5-turbo" # default model can be chnaged into gpt-4 or other models
+TEMPERATURE: 0 # 0 is deterministic for this case I prefer deterministic
+
+SAVING_FOLDER: "outputs"
+SAVING_FOLDER_CODE: "outputs/code"
+SAVING_FOLDER_TEXT: "outputs/text"
+
+DEFAULT_CODE_OUTPUT: "outputs/code/output.py"
+DEFAULT_TEXT_OUTPUT: "outputs/text/output.txt"
+
+OPENAI_API_KEY: ""
+

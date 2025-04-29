@@ -68,7 +68,7 @@ class FileUtils:
         
         extension = config.FILE_EXTENSIONS.get(language.lower(), ".txt")
         if extension == ".txt":
-            default_filename = config.SAVING_FOLDER_TEXT + f"/fixed_code{extension}"
+            default_filename = config.SAVING_FOLDER_TEXT + f"/fixed_text{extension}"
         else:
             default_filename = config.SAVING_FOLDER_CODE + f"/fixed_code{extension}"
         

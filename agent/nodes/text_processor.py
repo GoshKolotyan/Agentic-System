@@ -41,17 +41,13 @@ def edit_text(state: MessageState) -> MessageState:
     
     output_file = FileUtils.get_textgen_filename(filename=filename)
     
-    existing_text = FileUtils.read_file_if_exists(output_file)
+    existing_text = FileUtils.get_existing_file_for_language(output_file)
     
     prompt = f"""
     Edit the following text based on the user's request:
     
     User request: {user_message}
     
-    Existing text:
-    ```
-    {existing_text}
-    ```
     
     Provide the complete edited text with no additional explanations or markdown formatting.
     """
@@ -63,12 +59,12 @@ def edit_text(state: MessageState) -> MessageState:
     else:
         edited_text = edited_text_with_markdown
     
-    success = FileUtils.write_to_file(output_file, edited_text, is_code=False, is_question=False, is_text=True)
+    success = FileUtils.write_to_file(existing_text, edited_text, is_code=False, is_question=False, is_text=True)
 
     logging.info(f"Edited text: {edited_text}")
-    response = f"Edited text and saved to {output_file}"
+    response = f"Edited text and saved to {existing_text}"
     if not success:
-        response = f"Error saving edited text to {output_file}"
+        response = f"Error saving edited text to {existing_text}"
     
     return {
         **state,

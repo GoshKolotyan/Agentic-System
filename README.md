@@ -1,10 +1,10 @@
-**# LangGraph Message Processor**
+# ** LangGraph Message Processor**
 A natural language processing system that uses LangGraph for intent-based routing to handle various types of requests.
-**## Features**
+## **Features**
 - **Question Answering**: Get responses to your inquiries
 - **Code Operations**: Generate and edit code across different programming languages
 - **Text Operations**: Create and modify text content including creative writing
-**## Project Structure**
+## **Project Structure**
 ```
 .
 ├── Dockerfile
@@ -32,11 +32,11 @@ A natural language processing system that uses LangGraph for intent-based routin
 ├── requirements.txt
 └── run.py # runner of agent
 ```
-**## Installation**
-**### Prerequisites**
+## **Installation**
+### ** Prerequisites**
 - Python 3.8 or higher
 - pip package manager
-**### Option 1: Local Installation**
+### ** Option 1: Local Installation**
 1. Clone the repository
  ```bash
 git clone git@github.com:GoshKolotyan/Agentic-System.git
@@ -59,7 +59,7 @@ python -m venv agent-venv
  ```bash
 pip install -r requirements.txt
  ```
-**### Option 2: Docker**
+### **Option 2: Docker**
 1. Build and run using Docker Compose
  ```bash
 docker-compose up
@@ -77,12 +77,12 @@ Add your OpenAI API key as an environment variable
 export OPENAI_API_KEY='your-api-key'
 ```
 
-**## Usage**
-**### Running the Application**
+## **Usage**
+### **Running the Application**
 ```bash
 python run.py
 ```
-**### Example Requests**
+### **Example Requests**
 1. **Question Answering**
  ```
  What is DNA?

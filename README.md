@@ -3,7 +3,7 @@ A natural language processing system that uses LangGraph for intent-based routin
 
 ## Visualization of Graph
 
-![Visualization of Graph](images/Graph.png)
+![Visualization of Graph](images/graph.png)
 
 
 ## **Features**

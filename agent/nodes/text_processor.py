@@ -5,7 +5,7 @@ from ..utils.file_utils import FileUtils
 def generate_text(state: MessageState) -> MessageState:
     """ Generate free text based on user request"""
     user_message = state["messages"][-1].content
-    
+    filename = state.get("filename") or "output.txt"
     prompt = f"""
     Generate text based on the following request:
     {user_message}
@@ -17,9 +17,9 @@ def generate_text(state: MessageState) -> MessageState:
     if "```" in generated_text:
         generated_text = extract_code_from_markdown(generated_text)
     
-    output_file = FileUtils.get_output_filename(is_code=False)
+    output_file = FileUtils.get_textgen_filename(filename=filename)
     
-    success = FileUtils.write_to_file(output_file, generated_text)
+    success = FileUtils.write_to_file(output_file, generated_text, is_code=False, is_question=False)
     
     response = f"Generated text and saved to {output_file}"
     if not success:
@@ -35,8 +35,9 @@ def generate_text(state: MessageState) -> MessageState:
 def edit_text(state: MessageState) -> MessageState:
     """edit existing text based on user request."""
     user_message = state["messages"][-1].content
+    filename = state.get("filename") or "output.txt"
     
-    output_file = FileUtils.get_output_filename(is_code=False)
+    output_file = FileUtils.get_textgen_filename(is_code=False)
     
     existing_text = FileUtils.read_file_if_exists(output_file)
     
@@ -60,7 +61,8 @@ def edit_text(state: MessageState) -> MessageState:
     else:
         edited_text = edited_text_with_markdown
     
-    success = FileUtils.write_to_file(output_file, edited_text)
+    success = FileUtils.write_to_file(output_file, edited_text, is_code=False, is_question=False)
+
     
     response = f"Edited text and saved to {output_file}"
     if not success:

@@ -4,56 +4,31 @@ from ..config import Config
 
 class FileUtils:
     def __init__(self):
-        self.config = Config()
-    
+        self.config = Config()    
     @staticmethod
-    def get_output_filename(language: str = None, filename: str = None, is_code: bool = True) -> str:
+    def get_code_filename(filename: str = None) -> str:
         """Determine the appropriate output filename based on provided parameters."""
         config = Config()
-
-        # Case 1: Explicit filename provided (highest priority)
         if filename:
-            _, ext = os.path.splitext(filename)
-            if ext and is_code:
-                logging.info(f"Using explicit filename: {filename}")
-                return os.path.join(config.SAVING_FOLDER_CODE, filename)
-            elif is_code:
-                logging.info(f"Inferred language: {language} and extension: {ext}")
-                if language:
-                    ext = config.FILE_EXTENSIONS.get(language.lower(), ".txt")
-                    new_filename = f"{filename}{ext}"
-                    logging.info(f"Adding extension to filename: {new_filename}")
-                    return os.path.join(config.SAVING_FOLDER_CODE, new_filename)
-                else:
-                    logging.info(f"Using filename without known extension: {filename}")
-                    return os.path.join(config.SAVING_FOLDER_CODE, filename)
-            else:
-                logging.info(f"Saving text with filename: {filename}")
-                return os.path.join(config.SAVING_FOLDER_TEXT, filename)
-            
-        # Case 2: No filename but language specified (for code)
-        if is_code and language:
-            ext = config.FILE_EXTENSIONS.get(language.lower())
-            if not ext:
-                logging.warning(f"No extension found for language: {language}. Using .txt as default.")
-                ext = ".txt"
-            
-            output_name = f"output{ext}"
-            logging.info(f"Generated filename based on language: {output_name}")
-            return os.path.join(config.SAVING_FOLDER_CODE, output_name)
-        
-        # Case 3: Code but no language specified
-        elif is_code:
-            output_name = config.DEFAULT_CODE_OUTPUT
-            logging.info(f"Using default code output: {output_name}")
-            return os.path.join(config.SAVING_FOLDER_CODE, output_name)
-        
-        # Case 4: Not code (text content)
+            return os.path.join(config.SAVING_FOLDER_CODE, filename)
         else:
-            output_name = config.DEFAULT_TEXT_OUTPUT
-            logging.info(f"Using default text output: {output_name}")
-            return os.path.join(config.SAVING_FOLDER_TEXT, output_name)
-    
+            return os.path.join(config.SAVING_FOLDER_CODE, f"output")
+
+    def get_answer_filename(filename: str = None) -> str:
+        """Determine the appropriate output filename based on provided parameters."""
+        config = Config()
+        if filename:
+            return os.path.join(config.SAVING_FOLDER_ANSWERS, filename)
+        else:
+            return os.path.join(config.SAVING_FOLDER_ANSWERS, "output.txt")
+    @staticmethod
+    def get_textgen_filename(filename: str = None) -> str:
+        """Determine the appropriate output filename based on provided parameters."""
+        config = Config()
+        if filename:
+            return os.path.join(config.SAVING_FOLDER_TEXT, filename)
+        else:
+            return os.path.join(config.SAVING_FOLDER_TEXT, "output.txt")
     @staticmethod
     def read_file_if_exists(filename: str) -> str:
         """read file if it exists"""
@@ -69,12 +44,18 @@ class FileUtils:
             return f"# File {filename} does not exist. Creating new file."
     
     @staticmethod
-    def write_to_file(filename: str, content: str) -> bool:
+    def write_to_file(filename: str, content: str, is_question: bool = False, user_message: str = None, is_code: bool = False) -> bool:
         """write content to a file."""
         try:
             logging.info(f"Writing to file: {filename}")
             with open(filename, "w") as f:
-                f.write(content)
+                if is_question:
+                    f.write(f"Question: {user_message}\n\n")
+                    f.write(f"Answer: {content}\n\n")
+                elif is_code:
+                    f.write(content)
+                else:
+                    f.write(content)
             return True
         except Exception as e:
             logging.error(f"Error writing to {filename}: {str(e)}")
@@ -86,16 +67,19 @@ class FileUtils:
         config = Config()  
         
         extension = config.FILE_EXTENSIONS.get(language.lower(), ".txt")
-        default_filename = f"output{extension}"
+        if extension == ".txt":
+            default_filename = config.SAVING_FOLDER_TEXT + f"/output{extension}"
+        else:
+            default_filename = config.SAVING_FOLDER_CODE + f"/output{extension}"
         
-        if os.path.exists(default_filename):
-            logging.info(f"Existing file found: {default_filename}")
-            return default_filename
+        # if os.path.exists(default_filename):
+        #     logging.info(f"Existing file found: {default_filename}")
+        #     return default_filename
             
-        for filename in os.listdir("."):
-            if filename.endswith(extension):
-                logging.info(f"Found existing file: {filename}")
-                return filename
+        # for filename in os.listdir("."):
+        #     if filename.endswith(extension):
+        #         logging.info(f"Found existing file: {filename}")
+        #         return filename
                 
         logging.info(f"No existing file found, returning default: {default_filename}")
         return default_filename

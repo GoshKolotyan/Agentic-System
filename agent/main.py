@@ -1,5 +1,9 @@
 import sys
 import logging
+from pprint import pprint
+from prompt_toolkit import PromptSession
+from prompt_toolkit.shortcuts import prompt
+from prompt_toolkit.key_binding import KeyBindings
 from langgraph.graph import StateGraph, END
 
 # Import state and utilities
@@ -79,6 +83,14 @@ def build_graph():
     workflow.add_edge("generate_response", END)
     
     return workflow.compile()
+kb = KeyBindings()
+@kb.add('c-d')  # Ctrl+D to submit
+def _(event):
+    event.app.exit(result=event.app.current_buffer.text)
+
+@kb.add('escape', 'enter')  # Alt+Enter for newline
+def _(event):
+    event.app.current_buffer.insert_text('\n')
 
 def main():
     """Main entry point for the application."""
@@ -93,8 +105,13 @@ def main():
     try:
         while True:
             # Get user input
-            user_input = input("User message: ")
-            
+            logging.info("Enter your message (press Alt+Enter for new lines, Ctrl+D to submit):")
+            user_input = prompt(
+                "User message: ", 
+                multiline=True,
+                key_bindings=kb,
+            )
+                    
             # Skip empty inputs
             if not user_input.strip():
                 logging.warning("Empty input, skipping...")
@@ -102,14 +119,15 @@ def main():
             
             #initial state with user input
             initial_state = create_initial_state(user_input)
-            logging.info(f"Initial state: {initial_state}")
+            logging.info(f"Initial state:\n")
+            pprint(initial_state)       
             #process the input through the graph
             app.invoke(initial_state)
             
             logging.info("Ready for next input...")
             
     except KeyboardInterrupt:
-        logging.warning("\n\nExiting program. Goodbye!")
+        logging.warning("Exiting program. Goodbye!")
         sys.exit(0)
 
 if __name__ == "__main__":

@@ -1,12 +1,14 @@
 from ..utils.state import MessageState
 from ..utils.llm import query_llm, extract_code_from_markdown
 from ..utils.file_utils import FileUtils
+import logging
 
 def generate_code(state: MessageState) -> MessageState:
     """generate code based on user request. """
     user_message = state["messages"][-1].content
     language = state.get("language") or "python"
-    
+    filename = state.get("output_file") or "output"
+    logging.info(f"Generating code for {filename} in {language}")
     prompt = f"""
     Generate code based on the following request:
     {user_message}
@@ -20,7 +22,7 @@ def generate_code(state: MessageState) -> MessageState:
     
     code = extract_code_from_markdown(code_with_markdown, language)
     
-    output_file = FileUtils.get_output_filename(language=language, is_code=True)
+    output_file = FileUtils.get_code_filename(filename=filename)
     
     success = FileUtils.write_to_file(output_file, code)
     
@@ -39,6 +41,7 @@ def edit_code(state: MessageState) -> MessageState:
     """Edit existing code based on user request."""
     user_message = state["messages"][-1].content
     language = state.get("language") or "python"
+    filename = state.get("output_file") or "output"
     
     file_to_edit = FileUtils.get_existing_file_for_language(language)
     
@@ -61,7 +64,7 @@ def edit_code(state: MessageState) -> MessageState:
     
     edited_code = extract_code_from_markdown(edited_code_with_markdown, language)
     
-    success = FileUtils.write_to_file(file_to_edit, edited_code)
+    success = FileUtils.write_to_file(filename, edited_code, is_code=True)
     
     response = f"Edited {language} code and saved to {file_to_edit}"
     if not success:

@@ -25,9 +25,7 @@ logging.basicConfig(
 )
 
 def build_graph():
-    """
-    Build the LangGraph state machine.
-    """
+    """LangGraph state machine."""
     # init of graph
     workflow = StateGraph(MessageState)
     
@@ -71,7 +69,7 @@ def build_graph():
         }
     )
     
-    # Add edges from processors to response generator
+    # edges from processors to response generator
     workflow.add_edge("generate_code", "generate_response")
     workflow.add_edge("edit_code", "generate_response")
     workflow.add_edge("generate_text", "generate_response")
@@ -80,7 +78,6 @@ def build_graph():
     # Add edge from response generator to end
     workflow.add_edge("generate_response", END)
     
-    # Compile the graph
     return workflow.compile()
 
 def main():
@@ -105,7 +102,7 @@ def main():
             
             #initial state with user input
             initial_state = create_initial_state(user_input)
-            
+            logging.info(f"Initial state: {initial_state}")
             #process the input through the graph
             app.invoke(initial_state)
             

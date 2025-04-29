@@ -1,5 +1,11 @@
 # **LangGraph Message Processor**
 A natural language processing system that uses LangGraph for intent-based routing to handle various types of requests.
+
+## Visualization of Graph
+
+![Visualization of Graph](images/Graph.png)
+
+
 ## **Features**
 - **Question Answering**: Get responses to your inquiries
 - **Code Operations**: Generate and edit code across different programming languages

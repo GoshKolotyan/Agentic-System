@@ -91,20 +91,19 @@ python run.py
  ```
  create a C loop that counts from 1 to 10 and save in loop.c
  ```
-3. **Code Editing**
- ```
- Fix the bugs in this Python script:
- ```python
- def greet(name):
- if name == "":
-     return "Hello, stranger!"
- else
-     return "Hello, " + name + "!"
- # Test the function
- print(greet("Bob"))
- print(greet(""))
- ```
- ```
+3.  **Code Editing**
+   ```python
+   # Fix the bugs in this Python script:
+   def greet(name):
+       if name == "":
+           return "Hello, stranger!"
+       else:
+           return "Hello, " + name + "!"
+   
+   # Test the function
+   print(greet("Bob"))
+   print(greet(""))
+
  
 4. **Text Generation**
  ```

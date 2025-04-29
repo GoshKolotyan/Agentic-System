@@ -27,9 +27,7 @@ TEMPERATURE: 0 # 0 is deterministic for this case I prefer deterministic
 SAVING_FOLDER: "outputs"
 SAVING_FOLDER_CODE: "outputs/code"
 SAVING_FOLDER_TEXT: "outputs/text"
-
-DEFAULT_CODE_OUTPUT: "outputs/code/output.py"
-DEFAULT_TEXT_OUTPUT: "outputs/text/output.txt"
+SAVING_FOLDER_ANSWERS: "outputs/answers"
 
 OPENAI_API_KEY: ""
 

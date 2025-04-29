@@ -28,14 +28,15 @@ def handle_question(state: MessageState) -> MessageState:
                             is_question=True, user_message=user_message)
 
     #summary for logging
-    summary = answer[:100] + "..." if len(answer) > 100 else answer
+    # summary = answer[:100] + "..." if len(answer) > 100 else answer # removed summry as it was not needed
    
     #logging     
-    logging.info("ANSWER OF QUESTION:")
-    logging.info(f"{answer}")
+    logging.info(f"ANSWER OF QUESTION: {answer}")
+    # logging.info(f"{answer}")
+    # print(f"{answer}")
 
     # Update state
     return {
         **state,
-        "response": f"I've answered your question: {summary}"
+        "response": f"I've answered your question: {answer}"
     }

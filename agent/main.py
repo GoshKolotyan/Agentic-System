@@ -119,12 +119,11 @@ def main():
             
             #initial state with user input
             initial_state = create_initial_state(user_input)
-            logging.info(f"Initial state:\n")
-            pprint(initial_state)       
+
             #process the input through the graph
             app.invoke(initial_state)
             
-            logging.info("Ready for next input...")
+            # logging.info("Ready for next input...")
             
     except KeyboardInterrupt:
         logging.warning("Exiting program. Goodbye!")

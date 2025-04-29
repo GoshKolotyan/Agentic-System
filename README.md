@@ -91,7 +91,7 @@ python run.py
  ```
  create a C loop that counts from 1 to 10 and save in loop.c
  ```
-3.  **Code Editing**
+3. **Code Editing**
    ```python
    # Fix the bugs in this Python script:
    def greet(name):

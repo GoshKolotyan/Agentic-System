@@ -104,7 +104,7 @@ python run.py
  print(greet("Bob"))
  print(greet(""))
  ```
- ```
+ 
 4. **Text Generation**
  ```
  Generate a short novel about Bernard Riemann

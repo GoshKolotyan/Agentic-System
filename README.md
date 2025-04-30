@@ -113,7 +113,7 @@ python run.py
  
 4. **Text Generation**
  ```
- Generate a short novel about Bernard Riemann
+ Generate a short novel about Bernhard Riemann
  ```
 5. **Text Editing**
  ```

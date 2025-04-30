@@ -100,10 +100,10 @@ python run.py
 3. **Code Editing**
    ```python
    # Fix the bugs in this Python script:
-   def greet(name):
+   dec greet(name):
        if name == "":
            return "Hello, stranger!"
-       else:
+       elie:
            return "Hello, " + name + "!"
    
    # Test the function

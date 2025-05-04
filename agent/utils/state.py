@@ -11,6 +11,8 @@ class MessageState(TypedDict):
     output_file: Optional[str]  # output file of the code
     response: Optional[str]  # response of the code
 
+#TODO add short term and long term memory here 
+
 def detect_language_from_message(message: str) -> Optional[str]:
     """
     Detects programming language from a message by looking for common patterns:
@@ -40,7 +42,6 @@ def detect_language_from_message(message: str) -> Optional[str]:
         if re.search(pattern, message, re.IGNORECASE):
             return lang
     
-    # Check for code blocks with language specifiers
     code_block_pattern = r'```([a-zA-Z0-9_+#]+)[\s\n]'
     code_blocks = re.findall(code_block_pattern, message)
     if code_blocks:
@@ -101,7 +102,6 @@ def extract_output_file(message: str) -> Optional[str]:
 def parse_user_message(message: str) -> Tuple[Optional[str], Optional[str], Optional[str], Optional[str]]:
     """
     Parses a user message to extract language, source code, source text, and output file.
-    Returns a tuple of (language, source_code, source_text, output_file).
     """
     language = detect_language_from_message(message)
     output_file = extract_output_file(message)

@@ -13,7 +13,7 @@ class FileUtils:
             return os.path.join(config.SAVING_FOLDER_CODE, filename)
         else:
             return os.path.join(config.SAVING_FOLDER_CODE, f"output")
-
+    @staticmethod
     def get_answer_filename(filename: str = None) -> str:
         """Determine the appropriate output filename based on provided parameters."""
         config = Config()
@@ -47,7 +47,7 @@ class FileUtils:
     def write_to_file(filename: str, content: str, is_question: bool = False, user_message: str = None, is_code: bool = False, is_text: bool = False) -> bool:
         """write content to a file."""
         try:
-            logging.info(f"Writing to file: {filename}")
+            # logging.info(f"Writing to file: {filename}")
             with open(filename, "w") as f:
                 if is_question:
                     f.write(f"Question: {user_message}\n\n")

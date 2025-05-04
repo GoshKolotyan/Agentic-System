@@ -58,5 +58,5 @@ def extract_code_from_markdown(code_text: str, language: str = None) -> str:
                 
             return code
 
-    logging.warning("Warning: No code block found in the text")
+    # logging.warning("Warning: No code block found in the text")
     return code_text

@@ -27,5 +27,5 @@ class Config:
             logging.warning("OPENAI_API_KEY environment variable is not set.")
             logging.warning("Please see README.md for instructions")
             return False
-        logging.info("OPENAI_API_KEY environment variable is set")
+        logging.debug("OPENAI_API_KEY environment variable is set")
         return True

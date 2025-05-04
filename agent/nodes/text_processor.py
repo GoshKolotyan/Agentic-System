@@ -22,7 +22,7 @@ def generate_text(state: MessageState) -> MessageState:
     
     success = FileUtils.write_to_file(output_file, generated_text, is_code=False, is_question=False, is_text=True)
     
-    logging.info(f"Generated text: {generated_text}")
+    # logging.info(f"Generated text: {generated_text}")
     response = f"Generated text and saved to {output_file}"
     if not success:
         response = f"Error saving generated text to {output_file}"
@@ -61,7 +61,7 @@ def edit_text(state: MessageState) -> MessageState:
     
     success = FileUtils.write_to_file(existing_text, edited_text, is_code=False, is_question=False, is_text=True)
 
-    logging.info(f"Edited text: {edited_text}")
+    # logging.info(f"Edited text: {edited_text}")
     response = f"Edited text and saved to {existing_text}"
     if not success:
         response = f"Error saving edited text to {existing_text}"

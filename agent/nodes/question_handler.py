@@ -36,5 +36,5 @@ def handle_question(state: MessageState) -> MessageState:
     # Update state
     return {
         **state,
-        "response": f"I've answered your question: {answer}"
+        "response": answer
     }

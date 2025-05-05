@@ -34,11 +34,11 @@ class FileUtils:
         """read file if it exists"""
         if os.path.exists(filename):
             try:
-                logging.info(f"Reading file: {filename}")
+                # logging.info(f"Reading file: {filename}")
                 with open(filename, "r") as f:
                     return f.read()
             except Exception as e:
-                logging.error(f"Error reading file: {str(e)}")
+                # logging.error(f"Error reading file: {str(e)}")
                 return f"Error reading file: {str(e)}"
         else:
             return f"# File {filename} does not exist. Creating new file."
@@ -58,7 +58,7 @@ class FileUtils:
                     f.write(content)
             return True
         except Exception as e:
-            logging.error(f"Error writing to {filename}: {str(e)}")
+            # logging.error(f"Error writing to {filename}: {str(e)}")
             return False
     
     @staticmethod
@@ -81,5 +81,5 @@ class FileUtils:
         #         logging.info(f"Found existing file: {filename}")
         #         return filename
                 
-        logging.info(f"No existing file found, returning default: {default_filename}")
+        # logging.info(f"No existing file found, returning default: {default_filename}")
         return default_filename

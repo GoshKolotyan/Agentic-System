@@ -12,31 +12,35 @@ A natural language processing system that uses LangGraph for intent-based routin
 - **Text Operations**: Create and modify text content including creative writing
 ## **Project Structure**
 ```
-.
 ├── Dockerfile
 ├── LICENSE
 ├── README.md
 ├── agent
-│ ├── __init__.py
-│ ├── config.py
-│ ├── main.py # main function
-│ ├── nodes
-│ │ ├── __init__.py
-│ │ ├── analyzer.py
-│ │ ├── code_processor.py
-│ │ ├── intent_classifier.py
-│ │ ├── question_handler.py
-│ │ ├── response_generator.py
-│ │ └── text_processor.py
-│ └── utils
-│ ├── __init__.py
-│ ├── file_utils.py
-│ ├── llm.py
-│ ├── router.py
-│ └── state.py
-├── configs.yaml # configs
+│   ├── __init__.py
+│   ├── config.py
+│   ├── helper.py
+│   ├── main.py
+│   ├── nodes
+│   │   ├── __init__.py
+│   │   ├── analyzer.py
+│   │   ├── code_processor.py
+│   │   ├── intent_classifier.py
+│   │   ├── question_handler.py
+│   │   ├── response_generator.py
+│   │   └── text_processor.py
+│   └── utils
+│       ├── __init__.py
+│       ├── file_utils.py
+│       ├── llm.py
+│       ├── output_manager.py
+│       ├── router.py
+│       └── state.py
+├── configs.yaml
+├── docker-compose.yml
+├── images
+│   └── graph.png
 ├── requirements.txt
-└── run.py # runner of agent
+└── run.sh # runner 
 ```
 ## **Installation**
 ### **Prerequisites**
@@ -86,7 +90,8 @@ export OPENAI_API_KEY='your-api-key'
 ## **Usage**
 ### **Running the Application**
 ```bash
-python run.py
+chmod +x run.sh 
+./run.sh
 ```
 ### **Example Requests**
 1. **Question Answering**

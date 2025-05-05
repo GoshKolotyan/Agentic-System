@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt /app/
 
 RUN pip install --no-cache-dir -r requirements.txt
-
 COPY . /app/
+RUN chmod +x /app/run.sh
 
-CMD ["python", "run.py"]
+
+CMD ["/bin/bash", "/app/run.sh"]

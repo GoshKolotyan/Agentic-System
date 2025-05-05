@@ -26,7 +26,6 @@ logging.getLogger("openai._client").setLevel(logging.WARNING)
 logging.getLogger("httpx").setLevel(logging.WARNING)
 
 
-# Create key bindings
 kb = KeyBindings()
 @kb.add('c-d')  # Ctrl+D to submit
 def _(event):
@@ -48,13 +47,13 @@ def main():
         return
     
     try:
-        # Build the graph and start the main loop
+        # context manager for graph
         with GraphManager(config) as app:
             console.print("[green]Graph successfully built and initialized[/green]")
             
             while True:
                 try:
-                    # Get user input with prompt_toolkit
+                    #input with prompt_toolkit
                     console.print("[bold cyan]Enter your message[/bold cyan] (press Alt+Enter for new lines, Ctrl+D to submit):")
                     user_input = prompt(
                         "User message: ",
@@ -62,7 +61,7 @@ def main():
                         key_bindings=kb,
                     )
                     
-                    # Check for empty input
+                    #empty input avoid
                     if not user_input.strip():
                         console.print("[yellow]Empty input, please try again.[/yellow]")
                         continue
